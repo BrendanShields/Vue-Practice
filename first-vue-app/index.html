@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <title>Document</title>
+</head>
+<body>
+
+  <div id="app">
+    {{ message }} <!-- handlebars or moustache templates -->
+    {{ test }}
+    {{ test2 }}
+  </div>
+
+  <script>
+    const app = new Vue({
+      el: '#app', // where
+      data: { // what
+        message: 'Hello world from Vue.js',
+        test: 1 + 5,
+      }
+    });
+  </script>
+
+  <div id="app2">
+    <hr>
+    <span v-bind:title='message'> <!-- binds title to something in vue -->
+      Hover until tooltip appears
+    </span>
+  </div>
+
+  <script>
+    const app2 = new Vue({
+      el: '#app2',
+      data: {
+        message: `you loaded this page on  ${ new Date().toLocaleString()}`
+      }
+    })
+  </script>
+
+  <hr>
+
+  <div id="app3">
+    <span v-if="seen">Now you see me</span>
+  </div>
+
+  <script>
+    const app3 = new Vue({
+      el: "#app3",
+      data: {
+        seen: true
+      }
+    })
+  </script>
+
+  <div id="app4">
+    <ol>
+      <li v-for="todo in tasks"> {{ todo.text }} </li>
+    </ol>
+  </div>
+
+  <script type="text/javascript">
+    const app4 = new Vue ({
+      el: '#app4',
+      data: {
+        tasks: [
+        {text: 'Learn ES6'},
+        {text: 'Learn ES7'},
+        {text: 'Learn ES8'},
+        {text: 'Learn ES9'},
+        ]
+      }
+    })
+  </script>
+  <hr>
+  <div id="app5">
+    <p>{{message}}</p>
+    <button v-on:click="reverseMessage">Reverse Message</button>
+  </div>
+
+  <script>
+    const app5 = new Vue({
+      el: '#app5',
+      data: {
+        message: 'Hello World',
+      },
+      methods: {
+        reverseMessage(){
+          this.message.split('').reverse().join('')
+        }
+      }
+    })
+  </script>
+  <hr>
+  <div id="app6">
+    <p>{{ message }}</p>
+    <input v-model="message">
+  </div>
+  <script>
+    const app6 = new Vue({
+      el: '#app6',
+      data: {
+        message: 'Some stupid message bout landlords'
+      }
+    })
+  </script>
+</body>
+</html>
